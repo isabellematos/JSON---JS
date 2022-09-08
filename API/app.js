@@ -5,7 +5,7 @@
  *      express - npm install express --save
  *      
  *          É uma biblioteca para manipular as permissoes do protocolo http
- *          cors - npm install express --save
+ *          cors - npm install cors --save
  *              
  *              É uma biblioteca que permite manipular o corpo do protocolo http()
  *                  body-parser - npm install body-parser --save
@@ -73,7 +73,7 @@ app.get('/estados', cors(), async function(request, response,next){
 app.get('/estado/:sigla', cors(), async function(request, response, next){
     // recebe a sigla enviada por parametro no endpoint (:sigla)
     let sigla = request.params.sigla;
-    // Chama a funcao que vai localizar o estado soicitado
+    // Chama a funcao que vai localizar o estado solicitado
     let estado = getEstado(sigla)
 
     if(estado)
@@ -88,11 +88,13 @@ app.get('/estado/:sigla', cors(), async function(request, response, next){
 
 app.get('/cidades/:sigla', cors(), async function(request, response,next){
 
+    // recebe a sigla do estado encaminhado no endpoint
     let sigla = request.params.sigla;
-    // Chama a funcao que vai localizar o estado soicitado
+    // Chama a funcao de cidades para buscar cidades pela sigla do estado
     let cidades = getCidade(sigla)
     let cidadesJSON = {}
 
+    //conferir se a funçao retorna algo
     if(cidades)
     {
         cidadesJSON.cidades = cidades
