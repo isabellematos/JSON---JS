@@ -30,9 +30,9 @@ app.use((request, response, next) => {
 
 app.get('/livros/:palavra', cors(), async function(request, response,next){
 
-    // recebe a sigla do estado encaminhado no endpoint
+    // recebe a palavra chave encaminhada no endpoint
     let palavra = request.params.palavra;
-    // Chama a funcao de cidades para buscar cidades pela sigla do estado
+    // Chama a funcao de livros para buscar livros pela palavra chave
     let livros = getLivro(palavra)
     let bookJSON = {}
 
@@ -45,7 +45,22 @@ app.get('/livros/:palavra', cors(), async function(request, response,next){
     }else{
         response.status(404) 
     }
-   
+
+
+});
+
+app.get('/livros/', cors(), async function(request, response,next){
+    //recebe a variavel nome por query String (indicada quando precisamos criar filtros)
+    let palavra = request.query.palavra 
+    let livro = getLivro(palavra)
+
+    if(livro)
+    {
+        response.status(200);
+        response.json(livro)
+    }else{
+        response.status(404) 
+    }
 
 });
 

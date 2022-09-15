@@ -2361,9 +2361,9 @@ const getLivro = function(palavra){
     
     if(typeof(palavra) != 'undefined') {
         if(palavra != '') {
-           // percorrer o array de livros para validar o nome
+           // percorrer o array  principal de livros
             livros.forEach (item => {
-
+                // percorre o elemento books dentro de livros
                 item.books.forEach(itembooks => {
 
                     if(itembooks.title.toLowerCase().indexOf(palavraChave.toLowerCase()) > -1){
@@ -2373,7 +2373,7 @@ const getLivro = function(palavra){
                         erro = false
                }
             });
-         });
+          });
         
             livroResultado.total = total
             livroResultado.livros = totalLivros

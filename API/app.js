@@ -8,7 +8,7 @@
  *          cors - npm install cors --save
  *              
  *              É uma biblioteca que permite manipular o corpo do protocolo http()
- *                  body-parser - npm install body-parser --save
+ *                  body-parser - npm install cors --save
  */
 
  
