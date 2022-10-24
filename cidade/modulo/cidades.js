@@ -22431,7 +22431,7 @@ const getCidade = function(siglaEstado){
    let cidadeResultado = [];
    let erro = true;
    
-   if(typeof(sigla) != 'undefined')
+   if(typeof(sigla) == 'undefined')
    {
        if(sigla != '' && sigla.length == 2)
        {
