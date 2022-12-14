@@ -1,6 +1,6 @@
 /*****************************************************************************************************************
  * Objetivo: Arquivo responsavel pela configuracao de variaveis, constantes e mensagens do sistema
- * Autor: Isabelle
+ * Autora: Isabelle
  * Data Criacao: 13/10/2022
  * Versao: 1.0
  * 

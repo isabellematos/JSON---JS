@@ -1,7 +1,7 @@
 /*****************************************************************************************************************
  * Objetivo: Arquivo responsavel pela manipulacao de dados com o banco de dados 
  *      (insert, update, delete e select)
- * Autor: Isabelle
+ * Autora: Isabelle
  * Data Criacao: 06/10/2022
  * Versao: 1.0
  *  
@@ -170,10 +170,35 @@ const  selectAlunoById = async function (id) {
         return false;
 }
 
+//funcao para retornar o ultimo id gerado no banco
+const selectLastId = async function() {
+
+    //Import da classe prismaClient, que é responsavel pelas interacoes com o BD
+    const { PrismaClient } = require('@prisma/client')
+
+    //instancia da classe PrismaClient
+    const prisma = new PrismaClient();
+
+
+    //script para buscar o ultimo id gerado no banco de dados
+    let sql = `select cast(id as float) as id 
+                    from tbl_aluno
+                    order by id desc
+                    limit 1`
+
+    const rsAluno = await prisma.$queryRawUnsafe(sql);
+
+    if (rsAluno)
+        return rsAluno[0].id;
+    else 
+        return false;
+}
+
 module.exports = {
     selectAllAlunos,
     insertAluno,
     updateAluno,
     deleteAluno,
-    selectAlunoById
+    selectAlunoById,
+    selectLastId
 }
